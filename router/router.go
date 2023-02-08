@@ -1,8 +1,7 @@
 package router
 
 import (
-	"net/http"
-
+	"doki.life/api"
 	"github.com/gin-gonic/gin"
 )
 
@@ -18,11 +17,7 @@ func NewRouter() *gin.Engine {
 	// Recovery 中间件会 recover 任何 panic。如果有 panic 的话，会写入 500。
 	r.Use(gin.Recovery())
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
+	r.GET("/ping", api.Ping)
 
 	// // 你可以为每个路由添加任意数量的中间件。
 	// r.GET("/benchmark", MyBenchLogger(), benchEndpoint)
