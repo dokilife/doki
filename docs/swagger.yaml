@@ -1,0 +1,46 @@
+basePath: /api
+definitions:
+  models.Resp:
+    properties:
+      code:
+        description: 错误代码
+        type: integer
+      data:
+        description: 数据内容
+      msg:
+        description: 消息提示
+        type: string
+      request_id:
+        description: 请求ID
+        type: string
+    type: object
+host: 127.0.0.1:8080
+info:
+  contact: {}
+  description: api service
+  title: API Server
+  version: 1.0.0
+paths:
+  /ping:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Resp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.Resp'
+      summary: 测试连通
+      tags:
+      - Health
+securityDefinitions:
+  ApiKeyAuth:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
