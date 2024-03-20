@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package doki;
+
+option go_package = "genproto/doki";
+
+// -----User Service-----
+
+service UserService {
+    rpc CreateUser(CreateUserRequest) returns (User) {}
+}
+
+message User {
+    string uid = 1;
+    string email = 2;
+    string name = 3;
+    string avatar = 4;
+}
+
+message CreateUserRequest {
+    string email = 1;
+    string name = 2;
+    string password = 3;
+}

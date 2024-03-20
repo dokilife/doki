@@ -19,3 +19,6 @@
 
 # Go workspace file
 go.work
+
+# Ignore copied/generated protobuf files
+/src/userservice/genproto
